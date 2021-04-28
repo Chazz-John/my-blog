@@ -1,60 +1,78 @@
 <template>
-
-  <v-app>
-    <v-main>
-      <v-container
-          fill-height>
-        <v-card
-            class="mx-auto"
-            width="600px"
-            elevation="5"
+    <v-app id="inspire">
+      <v-main>
+        <v-container
+          class="fill-height"
+          fluid
         >
-          <div style="background-color: #2196F3 ;font-size: 22px;line-height: 50px;color:white;padding:10px">登录</div>
-          <v-card-text>
-            <div>
-              <v-text-field
-                  label="账号"
-                  hide-details="auto"
-              ></v-text-field>
-              <v-text-field label="密码">
-
-              </v-text-field>
-            </div>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn
-                dark
-                class="mx-2"
-                :loading="false"
-                :disabled=false
-                color="blue"
-                @click="loader = 'loading'"
-            >
-              登录
-            </v-btn>
-            <v-btn
-              class="mx-2"
-              dark
-              color="grey"
+          <v-row
+            align="center"
+            justify="center"
           >
-             重置
-          </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-container>
-    </v-main>
-    <Footer></Footer>
-  </v-app>
-
+            <v-col
+              cols="12"
+              sm="8"
+              md="4"
+            >
+              <v-card class="elevation-12">
+                <v-toolbar
+                  color="primary"
+                  dark
+                  flat
+                >
+                  <v-toolbar-title>Login form</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                      <v-btn
+                        :href="source"
+                        icon
+                        large
+                        target="_blank"
+                        v-on="on"
+                      >
+                        <v-icon>mdi-code-tags</v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Source</span>
+                  </v-tooltip>
+                </v-toolbar>
+                <v-card-text>
+                  <v-form>
+                    <v-text-field
+                      label="Login"
+                      name="login"
+                      prepend-icon="mdi-account"
+                      type="text"
+                    ></v-text-field>
+  
+                    <v-text-field
+                      id="password"
+                      label="Password"
+                      name="password"
+                      prepend-icon="mdi-lock"
+                      type="password"
+                    ></v-text-field>
+                  </v-form>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary">Login</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
 </template>
 
 <script>
-import Footer from "@/components/Footer";
 
 export default {
   name: "Login",
-  components: {
-    Footer
+  props: {
+    source: String,
   },
   data() {
     return {

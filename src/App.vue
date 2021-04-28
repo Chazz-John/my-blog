@@ -1,18 +1,15 @@
 <template>
   <v-app>
-    <login></login>
+    <router-view></router-view>
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import Login from "@/view/Login";
+import Footer from './components/Footer.vue';
 export default {
+  components: { Footer },
   name: 'App',
-
-  components: {
-    Login
-  },
-
   data: () => ({
   }),
 };
