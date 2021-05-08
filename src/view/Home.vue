@@ -3,6 +3,9 @@
 	<v-app id="inspire">
 		<v-navigation-drawer v-model="drawer" app>
 			<v-sheet color="grey lighten-4" class="pa-4">
+
+                <router-link to="login">登录</router-link>
+
 				<v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
 				<div>chazz0504@qq.com</div>
 			</v-sheet>
