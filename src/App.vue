@@ -1,14 +1,14 @@
 <template>
   <v-app>
     <router-view></router-view>
-    <Footer></Footer>
+    <homeFooter></homeFooter>
   </v-app>
 </template>
 
 <script>
-import Footer from './components/footer';
+import homeFooter from './components/homeFooter';
 export default {
-  components: { Footer },
+  components: { homeFooter },
   name: 'App',
   data: () => ({
   }),
