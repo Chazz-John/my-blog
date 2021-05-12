@@ -61,7 +61,7 @@ export default {
                 console.log(res)
             })
             .catch(err => {
-                console.error(err); 
+                console.error(err);
             })
         }
     },

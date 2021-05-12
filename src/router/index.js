@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import footer   from '../components/footer.vue'
-import login from '../view/login.vue'
-import index from '../view/index.vue'
+import login from '../view/login'
+import index from '../view/index'
 import userInfo from '../view/userInfo.vue'
 Vue.use(VueRouter);
 // 定义路由
@@ -18,11 +18,11 @@ const router = new VueRouter({
     routes
 })
 router.beforeEach((to, from, next) => {
-    if (to.name!=='login' && to.matched.some(record=>{record.meta.requiresAuth})) {
-        next({
-            path:'login',
-        })
-    }
+    // if (to.name!=='login' && to.matched.some(record=>{record.meta.requiresAuth}) && ) {
+    //     next({
+    //         path:'login',
+    //     })
+    // }
 })
 //导出实例
-export default router 
+export default router
