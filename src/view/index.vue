@@ -65,7 +65,7 @@
 
 <script>
 export default {
-	name: 'Index',
+	name: 'index',
 	data: () => ({
 		cards: ['Today', 'Yesterday'],
 		drawer: null,

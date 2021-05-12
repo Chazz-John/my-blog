@@ -43,7 +43,7 @@
 
 <script>
 export default {
-	name: 'Login',
+	name: 'login',
 	props: {
 	},
 	data() {

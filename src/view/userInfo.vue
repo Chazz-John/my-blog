@@ -5,7 +5,7 @@
 
 <script>
 export default {
-	name: 'UserInfo',
+	name: 'userInfo',
 	data() {
 		return {};
 	},
