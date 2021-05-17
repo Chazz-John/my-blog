@@ -1,81 +1,65 @@
 <!-- 博客首页 -->
 <template>
-	<v-app id="inspire">
-		<v-navigation-drawer v-model="drawer" app>
-			<v-sheet color="grey lighten-4" class="pa-4">
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-sheet color="grey lighten-4" class="pa-4">
+        <v-sheet v-if="!token" class="ma-2">
+			<v-btn to="login" block elevation="3">登录/注册<v-icon class="ma-2">mdi-account-plus</v-icon></v-btn>
+        </v-sheet>
+        <v-sheet v-if="token">
+          <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
+          <div>chazz0504@qq.com</div>
+        </v-sheet>
+      </v-sheet>
 
-                <router-link to="login">登录</router-link>
+      <v-divider></v-divider>
 
-				<v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
-				<div>chazz0504@qq.com</div>
-			</v-sheet>
+      <v-list>
+        <v-list-item v-for="[icon, text] in links" :key="icon" link>
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-			<v-divider></v-divider>
-
-			<v-list>
-				<v-list-item v-for="[icon, text] in links" :key="icon" link>
-					<v-list-item-icon>
-						<v-icon>{{ icon }}</v-icon>
-					</v-list-item-icon>
-
-					<v-list-item-content>
-						<v-list-item-title>{{ text }}</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
-			</v-list>
-		</v-navigation-drawer>
-
-		<v-main>
-			<v-container class="py-8 px-6" fluid>
-				<v-row>
-					<v-col v-for="card in cards" :key="card" cols="12">
-						<v-card hover>
-							<v-subheader>{{ card }}</v-subheader>
-
-							<v-list two-line>
-								<template v-for="n in 6">
-									<v-list-item :key="n">
-										<v-list-item-avatar color="grey darken-1">
-										</v-list-item-avatar>
-
-										<v-list-item-content>
-											<v-list-item-title>Message {{ n }}</v-list-item-title>
-
-											<v-list-item-subtitle>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Nihil repellendus distinctio similique
-											</v-list-item-subtitle>
-										</v-list-item-content>
-									</v-list-item>
-
-									<v-divider
-										v-if="n !== 6"
-										:key="`divider-${n}`"
-										inset
-									></v-divider>
-								</template>
-							</v-list>
-						</v-card>
-					</v-col>
-				</v-row>
-			</v-container>
-		</v-main>
-	</v-app>
+    <v-main>
+      <v-container class="py-8 px-6" fluid>
+		<router-view></router-view>
+        <v-row>
+          <v-col v-for="card in cards" :key="card" cols="12">
+            <v-card hover to="ArticleInfo">
+              <v-subheader>{{ card }}</v-subheader>
+              <v-list two-line>
+              </v-list>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 export default {
-	name: 'index',
-	data: () => ({
-		cards: ['Today', 'Yesterday'],
-		drawer: null,
-		links: [
-			['mdi-inbox-arrow-down', 'Inbox'],
-			['mdi-send', 'Send'],
-			['mdi-delete', 'Trash'],
-			['mdi-alert-octagon', 'Spam'],
-		],
-	}),
+  name: "index",
+  data: () => ({
+    cards: ["Today", "Yesterday"],
+    drawer: null,
+    links: [
+      ["mdi-home-circle", "首页"],
+      ["mdi-send", "Send"],
+      ["mdi-delete", "Trash"],
+      ["mdi-alert-octagon", "Spam"],
+    ],
+    token: "",
+  }),
+  mounted() {
+    this.token = localStorage.getItem("token");
+  },
 };
 </script>
 
