@@ -1,7 +1,7 @@
 <template>
     <v-app>
-        <h1>文章标题</h1>
         <v-main>
+            <h1>文章标题</h1>
             <div>文章主体</div>
             <div>评论信息</div>
         </v-main>

@@ -27,10 +27,10 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-container class="py-8 px-6" fluid>
-		<router-view></router-view>
+      <router-view></router-view>
+      <v-container class="py-8 px-6" fluid v-if="isArticle">
         <v-row>
-          <v-col v-for="card in cards" :key="card" cols="12">
+          <v-col v-for="card in cards" :key="card" cols="12" @click="isArticle = !isArticle">
             <v-card hover to="ArticleInfo">
               <v-subheader>{{ card }}</v-subheader>
               <v-list two-line>
@@ -51,13 +51,14 @@ export default {
     drawer: null,
     links: [
       ["mdi-home-circle", "首页"],
-      ["mdi-send", "Send"],
-      ["mdi-delete", "Trash"],
-      ["mdi-alert-octagon", "Spam"],
+      ["mdi-send", "分类"],
+      ["mdi-alert-octagon", "关于"],
     ],
     token: "",
+    isArticle:true,
   }),
   mounted() {
+    this.isArticle = true;
     this.token = localStorage.getItem("token");
   },
 };
