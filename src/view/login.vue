@@ -3,19 +3,55 @@
     <!-- form表单容器 -->
     <div class="forms-container">
       <div class="signin-signup">
-        <v-container width="80%">
-          <!-- 登录 -->
-          <v-form v-if="showForm">
-            <p>登录</p>
-            <v-text-field label="Solo" solo dense></v-text-field>
-          </v-form>
+        <!-- 登录 -->
+        <v-row v-if="showForm">
+          <v-col cols="6" offset="3">
+            <v-card class="grey lighten-3 pa-md-10" elevation="6">
+              <p>登录</p>
+              <v-text-field
+                v-model="email"
+                label="邮箱"
+                solo
+                prepend-inner-icon="mdi-email"
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
+                label="密码"
+                solo
+                prepend-inner-icon="mdi-lock"
+              ></v-text-field>
+              <v-card-actions>
+                <v-btn color="primary float-end">登录</v-btn>
+                <v-spacer></v-spacer>
+                没有账号?<v-btn color="primary" plain text @click="toLogin">去注册</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
 
-          <!-- 注册 -->
-          <v-form v-if="!showForm">
-            <p>注册</p>
-            <v-text-field label="Solo" solo dense></v-text-field>
-          </v-form>
-        </v-container>
+        <!-- 注册 -->
+        <v-row v-if="!showForm">
+          <v-col cols="6" offset="3">
+            <v-card class="grey lighten-3 pa-md-10" elevation="6">
+              <p>注册</p>
+              <v-text-field
+                v-model="email"
+                label="邮箱"
+                solo
+                prepend-inner-icon="mdi-email"
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
+                label="密码"
+                solo
+                prepend-inner-icon="mdi-lock"
+              ></v-text-field>
+              <v-card-actions>
+                <v-btn color="primary">注册</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
       </div>
     </div>
     <!-- 左右切换动画 -->
@@ -25,7 +61,6 @@
           <h2>学习是为了有更多的选择,让生活变的更美好!</h2>
           <p>何以解忧,唯有自修</p>
           <v-btn
-            rounded
             outlined
             color="#fff"
             @click="toLogin"
@@ -43,7 +78,6 @@
           <h2>以人为镜,可明得失, 以代码为镜,可通逻辑!</h2>
           <p>学习编程,让你的生活更有趣</p>
           <v-btn
-            rounded
             outlined
             color="#fff"
             @click="toLogin"
@@ -65,7 +99,7 @@ export default {
   props: {},
   data() {
     return {
-      name: "",
+      email: "",
       password: "",
       signUpMode: "",
       showForm: true,
@@ -76,7 +110,9 @@ export default {
     toLogin() {
       this.signUpMode = !this.signUpMode;
       setTimeout(() => {
-        this.showForm = !this.showForm;
+        (this.email = ""),
+          (this.password = ""),
+          (this.showForm = !this.showForm);
       }, 800);
     },
   },

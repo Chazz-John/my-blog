@@ -1,6 +1,6 @@
 <!-- 用户个人中心 -->
 <template>
-	<div></div>
+	<div>个人用户中心</div>
 </template>
 
 <script>
