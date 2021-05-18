@@ -6,21 +6,21 @@ const routes = [
     //配置映射路径
     {
         path: '/',
-        component: () => import('@/view/index'),
+        component: () => import('@/view/index/index'),
         children:[
             {
                 path: '/ArticleInfo',
-                component: () => import('@/view/ArticleInfo')
+                component: () => import('@/view/index/articleInfo')
             },
         ]
     },
     {
         path: '/login',
-        component: () => import('@/view/login')
+        component: () => import('@/view/admin/login')
     },
     {
         path: '/userInfo',
-        component: () => import('@/view/userInfo'),
+        component: () => import('@/view/admin/userInfo'),
         meta: {
             requiresAuth: true
         }

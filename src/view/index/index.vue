@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import api from '@/utils/http.js';
 export default {
   name: "index",
   data: () => ({
@@ -60,6 +61,13 @@ export default {
   mounted() {
     this.isArticle = true;
     this.token = localStorage.getItem("token");
+    api.get('/nacos-consumer/consumer')
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.error(err); 
+    })
   },
 };
 </script>

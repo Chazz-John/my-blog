@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: '',
+    baseURL: 'http://localhost:8084',
     timeout: 3000,
     headers: localStorage.getItem('token'),
 })
@@ -18,7 +18,6 @@ api.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(response => {
-    console.log(res)
     // Do something before response is sent
     return response;
 }, error => {
