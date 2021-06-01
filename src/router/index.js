@@ -35,6 +35,7 @@ const routes = [
 //创建路由实例
 const router = new VueRouter({
     mode: 'history',
+    base:'my-blog',
     routes
 })
 router.beforeEach((to, from, next) => {

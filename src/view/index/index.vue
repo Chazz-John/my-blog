@@ -4,7 +4,7 @@
     <v-navigation-drawer v-model="drawer" app>
       <v-sheet color="grey lighten-4" class="pa-4">
         <v-sheet v-if="!token" class="ma-2">
-			<v-btn to="login" block elevation="3">登录/注册<v-icon class="ma-2">mdi-account-plus</v-icon></v-btn>
+			<v-btn to="login" target="_blank" block elevation="3">登录/注册<v-icon class="ma-2">mdi-account-plus</v-icon></v-btn>
         </v-sheet>
         <v-sheet v-if="token">
           <v-avatar class="mb-4" color="grey darken-1" size="64"></v-avatar>
@@ -26,7 +26,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main z-index="99">
       <router-view></router-view>
       <v-container class="py-8 px-6" fluid v-if="isArticle">
         <v-row>
@@ -61,12 +61,12 @@ export default {
   mounted() {
     this.isArticle = true;
     this.token = localStorage.getItem("token");
-    api.get('/nacos-consumer/consumer')
-    .then(res => {
+    api.get('/nacos-consumer/getUserInfo')
+    .then((res) => {
         console.log(res)
     })
-    .catch(err => {
-        console.error(err); 
+    .catch((err) => {
+        console.error(err);  
     })
   },
 };
