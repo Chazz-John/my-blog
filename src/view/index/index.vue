@@ -38,6 +38,10 @@
             </v-card>
           </v-col>
         </v-row>
+        <v-text-field v-model="id"></v-text-field>
+        <v-text-field v-model="time"></v-text-field>
+        <v-btn @click="startDispatch()">开始任务</v-btn>
+        <v-btn @click="stopDispatch()">结束任务</v-btn>
       </v-container>
     </v-main>
   </v-app>
@@ -45,6 +49,7 @@
 
 <script>
 import api from '@/utils/http.js';
+import axios from "axios";
 export default {
   name: "index",
   data: () => ({
@@ -57,17 +62,40 @@ export default {
     ],
     token: "",
     isArticle:true,
+    id:'',
+    time:''
   }),
-  mounted() {
+  created() {
     this.isArticle = true;
     this.token = localStorage.getItem("token");
     api.get('/nacos-consumer/getUserInfo')
     .then((res) => {
-        console.log(res)
+        console.log(res.data)
     })
     .catch((err) => {
         console.error(err);  
     })
+  },
+  methods: {
+    startDispatch() {
+      axios.get("http://localhost:8084/nacos-consumer/startDispatch",{
+        params:{
+          dispatchId:this.id,
+          time:this.time
+        }
+      }).then(res=>{
+        console.log(res.data)
+      })
+    },
+    stopDispatch(){
+      axios.get("http://localhost:8084/nacos-consumer/stopDispatch",{
+        params:{
+          dispatchId:this.id
+        }
+      }).then(res=>{
+        console.log(res.data)
+      })
+    }
   },
 };
 </script>
