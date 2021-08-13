@@ -42,6 +42,10 @@
         <v-text-field v-model="time"></v-text-field>
         <v-btn @click="startDispatch()">开始任务</v-btn>
         <v-btn @click="stopDispatch()">结束任务</v-btn>
+        <v-btn @click="success()">success</v-btn>
+        <v-btn @click="info()">info</v-btn>
+        <v-btn @click="error()">error</v-btn>
+
       </v-container>
     </v-main>
   </v-app>
@@ -49,7 +53,6 @@
 
 <script>
 import api from '@/utils/http.js';
-import axios from "axios";
 export default {
   name: "index",
   data: () => ({
@@ -73,12 +76,12 @@ export default {
         console.log(res.data)
     })
     .catch((err) => {
-        console.error(err);  
+        console.error(err);
     })
   },
   methods: {
     startDispatch() {
-      axios.get("http://localhost:8084/nacos-consumer/startDispatch",{
+      api.get("http://localhost:8084/nacos-consumer/startDispatch",{
         params:{
           dispatchId:this.id,
           time:this.time
@@ -88,13 +91,27 @@ export default {
       })
     },
     stopDispatch(){
-      axios.get("http://localhost:8084/nacos-consumer/stopDispatch",{
+      api.get("http://localhost:8084/nacos-consumer/stopDispatch",{
         params:{
           dispatchId:this.id
         }
       }).then(res=>{
         console.log(res.data)
       })
+    },
+    success(){
+      this.$message.success({
+        message:'测试赛',
+        time:3000,
+      })
+    },
+    info(){
+      this.$message.info({
+        message: "info",
+      })
+    },
+    error() {
+      this.$message.error("错误信心")
     }
   },
 };
