@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <message/>
     <router-view></router-view>
     <homeFooter></homeFooter>
   </v-app>
@@ -7,8 +8,9 @@
 
 <script>
 import homeFooter from './components/homeFooter';
+import message from "@/components/message.vue";
 export default {
-  components: { homeFooter },
+  components: { homeFooter,message },
   name: 'App',
   data: () => ({
   }),

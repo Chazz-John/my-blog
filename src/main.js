@@ -4,12 +4,16 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import store from "./store"
+import message from './components/js/message'
 
 Vue.use(VueAxios,axios);
 Vue.config.productionTip = false
+Vue.prototype.$message = message
 
 new Vue({
+  router,
+  store,
   vuetify,
   render: h => h(App),
-  router,
 }).$mount('#app')
