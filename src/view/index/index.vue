@@ -101,7 +101,7 @@ export default {
     },
     success(){
       this.$message.success({
-        message:'测试赛',
+        message:'成功!',
         time:3000,
       })
     },
