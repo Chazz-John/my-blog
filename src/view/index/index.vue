@@ -40,8 +40,8 @@
         </v-row>
         <v-text-field v-model="id"></v-text-field>
         <v-text-field v-model="time"></v-text-field>
-        <v-btn @click="startDispatch()">开始任务</v-btn>
-        <v-btn @click="stopDispatch()">结束任务</v-btn>
+<!--        <v-btn @click="startDispatch()">开始任务</v-btn>-->
+<!--        <v-btn @click="stopDispatch()">结束任务</v-btn>-->
         <v-btn @click="success()">success</v-btn>
         <v-btn @click="info()">info</v-btn>
         <v-btn @click="error()">error</v-btn>
