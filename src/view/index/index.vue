@@ -107,11 +107,11 @@ export default {
     },
     info(){
       this.$message.info({
-        message: "info",
+        message: "这是一个massage",
       })
     },
     error() {
-      this.$message.error("错误信心")
+      this.$message.error("错误信息")
     }
   },
 };
