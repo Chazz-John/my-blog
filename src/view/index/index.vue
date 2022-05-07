@@ -40,8 +40,8 @@
         </v-row>
         <v-text-field v-model="id"></v-text-field>
         <v-text-field v-model="time"></v-text-field>
-        <v-btn @click="startDispatch()">开始任务</v-btn>
-        <v-btn @click="stopDispatch()">结束任务</v-btn>
+<!--        <v-btn @click="startDispatch()">开始任务</v-btn>-->
+<!--        <v-btn @click="stopDispatch()">结束任务</v-btn>-->
         <v-btn @click="success()">success</v-btn>
         <v-btn @click="info()">info</v-btn>
         <v-btn @click="error()">error</v-btn>
@@ -101,17 +101,17 @@ export default {
     },
     success(){
       this.$message.success({
-        message:'测试赛',
+        message:'成功!',
         time:3000,
       })
     },
     info(){
       this.$message.info({
-        message: "info",
+        message: "这是一个massage",
       })
     },
     error() {
-      this.$message.error("错误信心")
+      this.$message.error("错误信息")
     }
   },
 };
