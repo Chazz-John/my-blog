@@ -15,8 +15,8 @@ api.interceptors.request.use(function (config) {
     }
     return config;
 }, function (error) {
-    // 对请求错误做些什么
-    console.log(error);
+    // 对请求错误做些什么 例如打印
+    //console.log(error);
     return Promise.reject(error);
 });
 
@@ -27,8 +27,8 @@ api.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
-    // 对响应错误做点什么
-    console.log(error);
+    // 对响应错误做点什么 例如打印日志
+    //console.log(error);
     return Promise.reject(error);
 });
 export default api

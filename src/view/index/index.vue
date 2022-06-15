@@ -30,7 +30,7 @@
       <router-view></router-view>
       <v-container class="py-8 px-6" fluid v-if="isArticle">
         <v-row>
-          <v-col v-for="card in cards" :key="card" cols="12" @click="isArticle = !isArticle">
+          <v-col v-for="card in cards" :key="card" cols="12">
             <v-card hover to="ArticleInfo">
               <v-subheader>{{ card }}</v-subheader>
               <v-list two-line>
@@ -68,16 +68,16 @@ export default {
     id:'',
     time:''
   }),
-  created() {
+  mounted() {
     this.isArticle = true;
     this.token = localStorage.getItem("token");
-    api.get('/nacos-consumer/getUserInfo')
-    .then((res) => {
-        console.log(res.data)
-    })
-    .catch((err) => {
-        console.error(err);
-    })
+    // api.get('/nacos-consumer/getUserInfo')
+    // .then((res) => {
+    //     console.log(res.data)
+    // })
+    // .catch((err) => {
+    //     console.error(err);
+    // })
   },
   methods: {
     startDispatch() {
